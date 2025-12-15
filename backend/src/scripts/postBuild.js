@@ -11,8 +11,8 @@ if (!fs.existsSync(MEDUSA_SERVER_PATH)) {
 
 // Copy pnpm-lock.yaml
 fs.copyFileSync(
-  path.join(process.cwd(), 'pnpm-lock.yaml'),
-  path.join(MEDUSA_SERVER_PATH, 'pnpm-lock.yaml')
+  path.join(process.cwd(), 'bun.lock'),
+  path.join(MEDUSA_SERVER_PATH, 'bun.lock')
 );
 
 // Copy .env if it exists
@@ -26,7 +26,7 @@ if (fs.existsSync(envPath)) {
 
 // Install dependencies
 console.log('Installing dependencies in .medusa/server...');
-execSync('pnpm i --prod --frozen-lockfile', { 
+execSync('bun i --prod --frozen-lockfile', { 
   cwd: MEDUSA_SERVER_PATH,
   stdio: 'inherit'
 });
